@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table id="userTable" border="1">
+        <tr>
+            <th>고유번호</th>
+            <th>이름</th>
+            <th>가명</th>
+            <th>전자 통신망 주소</th>
+            <th>회사명</th>
+            <th>휴대전화번호</th>
+        </tr>
+       <!-- <tr>
+            <td>1</td>
+            <td>홍길동</td>
+            <td>유승원</td>
+            <td>appledunglee@gmail.com</td>
+            <td>아뮤즈 커피 대리점</td>
+            <td>010-7777-7777</td>
+        </tr>
+    </table> -->
+
+    <script>
+      async function a() {
+        const getUserData = await fetch(
+          "https://jsonplaceholder.typicode.com/users"
+        );
+        const userData = await getUserData.json();
+        console.log(userData);
+
+        //for (let i = 0; i<10; i++)
+        //{
+        //    console.log(userData[i]);
+        //}
+        
+        userData.forEach(function(data){
+            let userTableContents = "";
+            const userTableElem = document.querySelector("#userTable");
+            userTableContents += `<tr>`;
+            userTableContents += `<td>${data["id"]}</td>`;
+            userTableContents += `<td>${data["name"]}</td>`;
+            userTableContents += `<td>${data["username"]}</td>`;
+            userTableContents += `<td>${data["email"]}</td>`;
+            userTableContents += `<td>${data["company"]["name"]}</td>`;
+            userTableContents += `<td>${data["phone"]}</td>`;
+            userTableContents += `</tr>`;
+            userTableElem.innerHTML += userTableContents;
+         })
+         
+      }
+      
+      a();
+    </script>
+  </body>
+</html>

@@ -117,3 +117,14 @@ a {
 a:hover {
     color: blue; /* 호버 시 링크 색상 변경 */
 }
+header
+{
+    z-index: 1;
+}
+#controlBtn{
+    text-align: center;
+    margin-top:20px;
+}
+#controlBtn button{
+    font-size: 24px;
+}
