@@ -19,3 +19,15 @@ function playCarousel(){
     const myCarouselElement = document.querySelector('#carouselExampleIndicators')
     $(myCarouselElement).carousel('cycle')
 }
+
+//Reservation
+function reservation() {
+    //JSON파일에서 데이터 불러오기
+    async function fetchReservation(){
+        const gerReservationJSON = await fetch("../api/reservation.json");
+        const reservationJSON = await gerReservationJSON.json();
+        console.log(reservationJSON["reservition"])
+        return reservationJSON["reservition"]
+    }
+    
+}

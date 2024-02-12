@@ -9,7 +9,6 @@
     align-items: center;
     background-color: white;
     padding: 8px 12px;
-    position: fixed;
     width: 100%;
 }
 body { 
@@ -127,4 +126,42 @@ header
 }
 #controlBtn button{
     font-size: 24px;
+}
+td
+{
+    color: black;
+    text-align: center;
+    border: 3px solid black;
+    margin: 0;
+    padding: 0;
+}
+th{
+    color: black;
+    border: 3px solid black;
+    margin: 0;
+    padding: 0;
+}
+.graph
+{
+    text-align: centerf;
+    padding-top: 40px;
+}
+table{
+    margin: 0 auto;
+}
+.ck
+{
+    color: green;
+}
+.fi
+{
+    color: red;
+}
+.uu{
+    color:grey;
+}
+#reservtion
+{
+    border: 3px solid black;
+    border-collapse: collapse;
 }

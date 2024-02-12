@@ -38,16 +38,16 @@
         //    console.log(userData[i]);
         //}
         
-        userData.forEach(function(data){
+        userData.forEach(function(choiwonjund_babo){
             let userTableContents = "";
             const userTableElem = document.querySelector("#userTable");
             userTableContents += `<tr>`;
-            userTableContents += `<td>${data["id"]}</td>`;
-            userTableContents += `<td>${data["name"]}</td>`;
-            userTableContents += `<td>${data["username"]}</td>`;
-            userTableContents += `<td>${data["email"]}</td>`;
-            userTableContents += `<td>${data["company"]["name"]}</td>`;
-            userTableContents += `<td>${data["phone"]}</td>`;
+            userTableContents += `<td>${choiwonjund_babo["id"]}</td>`;
+            userTableContents += `<td>${choiwonjund_babo["name"]}</td>`;
+            userTableContents += `<td>${choiwonjund_babo["username"]}</td>`;
+            userTableContents += `<td>${choiwonjund_babo["email"]}</td>`;
+            userTableContents += `<td>${choiwonjund_babo["company"]["name"]}</td>`;
+            userTableContents += `<td>${choiwonjund_babo["phone"]}</td>`;
             userTableContents += `</tr>`;
             userTableElem.innerHTML += userTableContents;
          })
