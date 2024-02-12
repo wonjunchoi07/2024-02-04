@@ -146,8 +146,9 @@ th{
     text-align: centerf;
     padding-top: 40px;
 }
-table{
+#resTable{
     margin: 0 auto;
+    border-collapse: collapse;
 }
 .ck
 {
@@ -164,4 +165,26 @@ table{
 {
     border: 3px solid black;
     border-collapse: collapse;
+}
+#resTable tr{
+    border: 1px solid black;
+}
+#resTable th{
+    border: 1px solid black;
+}
+.sat
+{
+    color: blue;
+}
+.C{
+    color: gray;
+}
+.R,
+.sun
+{
+    color: red;
+}
+.W{
+    color:green;
+    cursor: pointer;
 }
