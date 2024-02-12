@@ -91,7 +91,11 @@ function reservation() {
 
         
     }
-    updateReservation();
+    //5초마다 updateReservation 함수를 호출
+    setInterval(() => {
+        updateReservation();
+    },5000)
+    updateReservation();// 최초 접속 시 updateReservation을 즉시 호출하여 페이지를 렌더링
     
 
 }
