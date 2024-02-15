@@ -77,6 +77,7 @@ function reservation() {
                 } else if(data == "R"){
                     tdElem.innerText = "▲";
                     tdElem.className = `R D+${i} ${k}`;
+                    tdElem.addEventListener("click",noyaeyak);
                 }else{
                     tdElem.innerText = "■";
                     tdElem.className = `C D+${i} ${k}`;
@@ -136,6 +137,10 @@ function yaeyak(){
     document.querySelector("#price").innerText = `금액 : ${price.toLocaleString()}원`;//메소드를 이용해서 천 단위를 ,로 구분해줌
 
     $("#exampleModalLive").modal("show");
+}
+
+function noyaeyak(){
+    alert("예약할 수 없습니다.");
 }
 // 휴대폰 번호 정규표현식으로 3-4-4 만들기
 const regexPhonNumber = (target) =>{
