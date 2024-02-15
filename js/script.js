@@ -44,13 +44,13 @@ function reservation() {
 
         if(week == 0)
         {
-           resDateTableElem.innerHTML += `<th class="sun">${calendar}</th>`//조건에 맞게 sun이라는 클래스 추가
+           resDateTableElem.innerHTML += `<th id="D+${i}>${calendar}</th>`//조건에 맞게 sun이라는 클래스 추가
         }
         else if(week == 6){
-            resDateTableElem.innerHTML += `<th class=sat>${calendar}</th>`//조건에 맞게 sat이라는 클래스 추가
+            resDateTableElem.innerHTML += `<th id="D+${i}>${calendar}</th>`//조건에 맞게 sat이라는 클래스 추가
         }
         else{
-            resDateTableElem.innerHTML += `<th>${calendar}</th>`
+            resDateTableElem.innerHTML += `<th id="D+${i}>${calendar}</th>`
         }
 
     }
@@ -73,6 +73,7 @@ function reservation() {
                 if (data =="W"){// 조건에 맞게 출력 및 클래스 네임 처리
                     tdElem.innerText = "●";
                     tdElem.className = `W D+${i} ${k}`;
+                    tdElem.addEventListener("click",yaeyak);
                 } else if(data == "R"){
                     tdElem.innerText = "▲";
                     tdElem.className = `R D+${i} ${k}`;
@@ -98,4 +99,85 @@ function reservation() {
     updateReservation();// 최초 접속 시 updateReservation을 즉시 호출하여 페이지를 렌더링
     
 
+}
+function yaeyak(){
+    const rowValue = this.classList[2];
+    let position;
+    if (rowValue <= 6){
+        position = "A" +("0" + (Number(rowValue) + 1)).slice(-2);
+    }else{
+        position = "T" +("0" + (Number(rowValue) - 6)).slice(-2);
+    }
+
+    document.querySelector("#position").innerText = `자리 : ${position}`;
+    $("#exampleModalLive").modal("show");
+
+    document.querySelector("#positon").innerText = `자리 : ${position}`;
+    $("#exampleModalLive").modal("show");
+
+    const week = document.getElementById(`${this.classList[1]}`).className;//파라미터를 이용해서 데이터를 가져옴
+    //주말, 평일 / a,t 영역구분
+    let price;
+    if(week != ""){
+        if(position.includes("A")){//if 문을 사용해서 주말 요금과 평일 요금 A자리를 이용해서 계산함
+            price = 30000;
+        }else{
+            price = 20000;
+        }
+    }else{
+        if(position.includes("A")){
+            price = 25000;
+        }else{
+            price =15000;
+        }
+    }
+
+    document.querySelector("#position").innerText = `날짜 : ${position}`;
+    document.querySelector("#price").innerText = `금액 : ${price.toLocaleString()}원`;//메소드를 이용해서 천 단위를 ,로 구분해줌
+
+    $("#exampleModalLive").modal("show");
+}
+// 휴대폰 번호 정규표현식으로 3-4-4 만들기
+const regexPhonNumber = (target) =>{
+    target.value = target.value.replace(/[^0-9]/g,"").replace(/^(|d{3})(|d{4})(|d{4})/,`$1-$2-$3`); //정규 표현식을 사용해서 전화번호를 -을 사용해서 구분함
+}
+//인증번호 정규표현식
+const regexVarifyNumber = (target) => {
+    target.value = target.vlaue.replace(/[^0-9]/g,"");
+}
+
+//인증번호 칸 활성화 조건
+function sendVerifyNumber(){
+    if(document.querySelector("#phoneNumber").value.length == 13){ //전화번호 길이가 13이면 인증번호칸 활성화.
+        document.querySelector("#phoneVerify").disbled = false;
+    }else{
+        alert("휴대폰 번호를 확인해주세요");
+    }
+}
+
+
+function reservationSubmit(){
+    const name = doncument.querySelector("#name").value;
+    const phoneNumber = document.querySelector("#phoneNumber").value;
+    const phoneVerify = document.querySelector("#phoneVerify").value;
+
+    if(!name) {
+        return alert("이름을 확인하여 주시기 바랍니다.") //value는 문자열로 데이터를 들고와서 name에 문자가 있는 지 없는 지 검사해줌
+    }
+    if(phoneNumber.length != 13){
+        return alert("전화번호를 확인하여 주시기 바랍니다.")
+    }
+    if(phoneVerify != "1234"){
+        return alert("인증번호를 확인하여 주시기 바랍니다.")
+    }
+
+    $("#exampleModalLive").modal("hide");
+    //alert("예약완료")
+    showToast();
+}
+
+function showToast(){
+const toastLiveExample = document.getElementById('liveToast')
+const toast = new bootstrap.Toast(toastLiveExample)
+toast.show();
 }

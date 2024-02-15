@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./bootstrap-5.2.0/bootstrap/dist/css/bootstrap.css">
     <title>Document</title>
 </head>
 <body>
@@ -109,9 +110,67 @@
 
 
 
+    <!--모달 시작-->
+    <div
+      class="modal fade"
+      id="exampleModalLive"
+      tabindex="-1"
+      aria-labelledby="exampleModalLiveLabel"
+      aria-hidden="true">
+    
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLiveLabel">Modal title</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <h4 id="position">자리: </h4>
+            <h4 id="price">금액:</h4>
+            <div class="input-group mb-3">
+                <input type="text" id="name" class="form-control" placeholder="이름" aria-label="이름" aria-describedby="basic-addon1">
+              </div>
+              <div class="input-group mb-3">
+                  <input type="text" id="phoneNumber" class="form-control" placeholder="전화번호" aria-label="전화번호" aria-describedby="basic-addon1">
+                  <button class="btn btn-outline-secondary" type="button" id="button-addon2">인증번호 발송</button>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="인증번호" aria-label="인증번호" aria-describedby="button-addon2" disabled>
+                    
+                </div> 
+            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+            <button type="button" class="btn btn-primary">예약하기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--모달 끝-->
+
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <strong class="me-auto">예약안내</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            예약정보가 정상등록되었습니다. <br>
+            관리자 승인 후 예약이 최종 완료됩니다.
+          </div>
+        </div>
+    </div>
 
 
     <script src="./js/script.js"></script>
+    <script src="./02.jquery/jquery-3.6.0.js"></script>
+    <script src="./bootstrap-5.2.0/bootstrap/dist/js/bootstrap.js"></script>
     <script>
         reservation();
     </script>
