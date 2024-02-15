@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./bootstrap-5.2.0/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+
+            <div class="navbar__logo">
+                <i class="fas fa-blog"></i>
+                <a href="./index.html"><img class="logo" id="logo" src="./logo.jpg" alt=""></a>
+            </div>
+            <P><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></P>
+            <P><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></P>
+            <P><a href="#">&nbsp;&nbsp;&nbsp;</a></P>
+            <ul class="navbar__menu">
+                <li><a href="./camp.html">캠핑장 소개</a></li>
+                <li><a href="./reservtion.html">예약페이지</a></li>
+                <li><a href="#">마이페이지</a></li>
+                <li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                <li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                <li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+            </ul>
+  
+            <ul class="navbar__icons">
+                <li><a href="#" class="login">로그인</i></li>
+                <li><a href="#" class="include">회원가입</i></li>
+            </ul>
+
+            <a href="#" class="navbar__toggleBtn">
+                <i class="fas fa-hamburger"></i>
+            </a>
+        </nav>
+
+    </header>
+    <hr>
+    <main>
+        <div class="my" id="my">
+            <table>
+                <tr>
+                    <th>예약 날짜</th>
+                    <th>예약 자리</th>
+                    <th>예약 상태</th>
+                    <th>예약 취소</th>
+                    <th>바비큐 주문하기</th>
+                    <th>주문건수</th>
+                    <th>주문내역 보기</th>
+                </tr>
+                <tr>
+                    <td>2023.04.05</td>
+                    <td>A01</td>
+                    <td>예약완료</td>
+                    <td><button>예약취소</button></td>
+                    <td id="BabiqOrder"><button onclick="orderModal()">바비큐 주문하기</button></td>
+                    <td id="totalOrder">0</td>
+                    <td><button>주문 내역 보기</button></td>
+                </tr>
+            </table>
+        </div>          
+    </main>
+
+    <div class="modal fade" id="BabiqOrderModal" tabindex="-1" aria-labelledby="exampleModalLiveLabel" aria-hidden="false">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLiveLabel">바비큐 주문하기</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5>자리: A01</h5>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">바비큐 그릴 대여(도구 및 술 등 포함): 1개 10,000원</span>
+                <input type="number" id="babiqGrill" class="form-control" placeholder="개수" aria-label="개수" value="0" min="0" max="1" aria-describedby="basic-addon1" oninput="setPrice(this)">
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">돼지고기 바비큐 세트: 1인분 12,000원</span>
+                <input type="number" id="pigBabiq" class="form-control" placeholder="개수" aria-label="개수" value="0" min="0" aria-describedby="basic-addon1" oninput="setPrice(this)" >
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">해산물 바비큐 세트 : 1인분 15,000원</span>
+                <input type="number" id="haesanBabiq" class="form-control" placeholder="개수" aria-label="개수" value="0" min="0" aria-describedby="basic-addon1" oninput="setPrice(this)" >
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">음료 : 1병 3,000원</span>
+                <input type="number" id="juice" class="form-control" placeholder="개수" aria-label="개수" value="0" min="0" aria-describedby="basic-addon1" oninput="setPrice(this)" >
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">주류 : 1병 5,000원</span>
+                <input type="number" id="soju" class="form-control" placeholder="개수" aria-label="개수" value="0" min="0" aria-describedby="basic-addon1" oninput="setPrice(this)" >
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">과자 세트 : 1세트(3종) 4,000원</span>
+                <input type="number" id="gajaSet" class="form-control" placeholder="개수" aria-label="개수" value="0" min="0" aria-describedby="basic-addon1" oninput="setPrice(this)" >
+              </div>
+            </div>
+            <div class="modal-footer">
+                <h5 id="totalPrice">총 주문금액: 0</h5>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+              <button type="button" class="btn btn-primary" onclick="babiqSubmit()">주문하기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <script src="./02.jquery/jquery-3.6.0.js"></script>
+    <script src="./bootstrap-5.2.0/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>
